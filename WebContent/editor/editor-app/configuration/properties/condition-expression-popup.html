@@ -1,0 +1,150 @@
+<div class="modal" ng-controller="KisBpmConditionExpressionPopupCtrl">
+	<div class="modal-dialog modal-wide">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+				<h2 translate>PROPERTY.SEQUENCEFLOW.CONDITION.TITLE</h2>
+			</div>
+			<div class="modal-body">
+				<div ng-if="popup.saveDialog.errorMessage && popup.saveDialog.errorMessage.length > 0" class="alert error"
+					style="font-size: 14px;">
+					<div class="popup-error" style="font-size: 14px">
+						<span class="glyphicon glyphicon-remove-circle"></span> <span>{{popup.saveDialog.errorMessage}}</span>
+					</div>
+				</div>
+
+				<div class="detail-group clearfix">
+
+					<div class="form-group clearfix">
+						<div class="col-xs-12">
+							<label class="col-xs-2">表达式类型</label>
+							<div class="col-xs-10">
+								<!--start update by Asy - pop form selection -->
+								<div class="btn-group btn-group-justified">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" ng-click="popup.conditionObject.type = 'none'"
+											ng-model="popup.conditionObject.type"
+											ng-class="{'active' : popup.conditionObject.type != 'static' && popup.conditionObject.type != 'simple'}">
+											无</button>
+									</div>
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" ng-click="popup.conditionObject.type = 'simple'"
+											ng-model="popup.conditionObject.type" ng-class="{'active' : popup.conditionObject.type == 'simple'}">
+											表单选择器</button>
+									</div>
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" ng-click="popup.conditionObject.type = 'static'"
+											ng-model="popup.conditionObject.type" ng-class="{'active' : popup.conditionObject.type == 'static'}">
+											固定值表达式</button>
+									</div>
+								</div>
+								<!--end update by Asy - pop form selection -->
+							</div>
+						</div>
+					</div>
+
+					<!--start update by Asy - pop form selection -->
+					<div class="form-group clearfix" ng-show="popup.conditionObject.type == 'static'">
+						<div class="col-xs-12">
+							<label class="col-xs-2">{{'PROPERTY.SEQUENCEFLOW.CONDITION.STATIC' | translate}}</label>
+							<div class="col-xs-10">
+								<textarea class="form-control" ng-model="popup.conditionObject.staticValue"
+									style="width: 70%; height: 100%; max-width: 100%; max-height: 100%; min-height: 50px"
+									placeholder="${choose=='agree'}"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group clearfix" ng-show="popup.conditionObject.type == 'simple'">
+						<div class="col-xs-12">
+							<label class="col-xs-2">选择自定义表单</label>
+							<div class="col-xs-10">
+								<select class="form-control" ng-model="popup.conditionObject.form.name"
+									ng-init="popup.conditionObject.form.name == '' ? popup.conditionObject.form.name = popup.conditionObject.form.forms[0].key : popup.conditionObject.form.name"
+									ng-change="popup.conditionObject.form.field.key = popup.conditionObject.form.formMap[popup.conditionObject.form.name].fields[0].id">
+									<option ng-repeat="f in popup.conditionObject.form.forms" value="{{f.key}}"
+										ng-selected="f.key==popup.conditionObject.form.name">{{f.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group clearfix"
+						ng-show="popup.conditionObject.type == 'simple' && popup.conditionObject.form.name != '' && popup.conditionObject.form.name != null ">
+						<div class="col-xs-12">
+							<label class="col-xs-2">选择表单属性</label>
+							<div class="col-xs-10">
+								<div class="btn-group btn-group-justified">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" ng-model="popup.conditionObject.form.type"
+											ng-class="{'active' : popup.conditionObject.form.type == 'field'}"
+											ng-click="popup.conditionObject.form.type = 'field'; popup.conditionObject.form.field.key = popup.conditionObject.form.formMap[popup.conditionObject.form.name].fields[0].id">
+											表单字段</button>
+									</div>
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" ng-click="popup.conditionObject.form.type = 'outcome'"
+											ng-model="popup.conditionObject.form.type" ng-class="{'active' : popup.conditionObject.form.type != 'field'}">
+											表单自定义按钮</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group clearfix"
+						ng-show="popup.conditionObject.type == 'simple' && popup.conditionObject.form.name != '' && popup.conditionObject.form.name != null && popup.conditionObject.form.type != 'field'">
+						<div class="col-xs-12">
+							<label class="col-xs-2">选择页面按钮</label>
+							<div class="col-xs-10">
+								<button type="button" class="btn btn-default"
+									ng-repeat="f in popup.conditionObject.form.formMap[popup.conditionObject.form.name].outcomes"
+									ng-click="popup.conditionObject.form.button = f" ng-model="popup.conditionObject.form.button"
+									ng-class="{'active' : popup.conditionObject.form.button == f}">{{f}}</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group clearfix"
+						ng-show="popup.conditionObject.type == 'simple' && popup.conditionObject.form.name != '' && popup.conditionObject.form.name != null && popup.conditionObject.form.type == 'field'">
+						<div class="col-xs-12">
+							<label class="col-xs-2">表单字段匹配</label>
+							<div class="col-xs-4">
+								<select class="form-control" ng-model="popup.conditionObject.form.field.key">
+									<option ng-repeat="f in popup.conditionObject.form.formMap[popup.conditionObject.form.name].fields"
+										value="{{f.id}}" ng-selected="f.id==popup.conditionObject.form.field.key">{{f.name}}</option>
+								</select>
+							</div>
+							<div class="col-xs-2">
+								<select class="form-control" ng-model="popup.conditionObject.form.field.operator">
+									<option value="equal" selected="selected">等于</option>
+									<option value="grater">大于</option>
+									<option value="litter">小于</option>
+									<option value="graterEqual">大于等于</option>
+									<option value="litterEqual">小于等于</option>
+								</select>
+							</div>
+							<div class="col-xs-4">
+								<input class="form-control" type="text" ng-model="popup.conditionObject.form.field.value" placeholder="填写表单字段值" />
+							</div>
+						</div>
+					</div>
+
+					<!-- <div class="form-group clearfix" ng-show="popup.conditionObject.type == 'simple'">
+			             <div class="col-xs-12">
+			                 <label class="col-xs-2">表达式预览</label>
+				             <div class="col-xs-10">
+				             	<input class="form-control" ng-model="popup.conditionObject.static.preValue" readonly="readonly">
+				             </div>
+			             </div>
+			         </div> -->
+					<!--end update by Asy - pop form selection -->
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button ng-click="close()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+				<button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,101 @@
+{
+   "GENERAL": {
+        "MAIN-TITLE": "Activiti",
+        "ERROR": {
+            "GENERIC": "对不起，一个错误发生了。",
+            "UNKNOWN": "对不起，在执行所请求的操作时发生了错误。",
+            "BAD_REQUEST": "在执行请求操作时出现错误",
+            "NOT_FOUND": "你试图访问的资源并不存在",
+            "UNAUTHORIZED": "你应该登录，以便执行所要求的操作。",
+            "FORBIDDEN": "你不被允许执行所要求的操作",
+            "INTERNAL_SERVER_ERROR": "对不起，在执行所请求的操作时发生了意外的错误。",
+            "QUOTA-EXCEEDED-RUNTIME-APPS": "作为一个试用用户，你只能在同一时间部署配额应用。",
+            "QUOTA-EXCEEDED-LICENSE-APPS": "许可证只允许在同一时间部署的配额应用。"
+        },
+        "ACTION": {
+            "LOGOUT": "登出",
+            "HELP": "入门",
+            "EDIT-PROFILE": "编辑配置文件",
+            "SAVE": "保存",
+            "CANCEL": "取消",
+            "CLOSE": "关闭",
+            "DEPLOY": "部署",
+            "ABOUT": "关于 Alfresco Activiti"
+        }
+    },
+    "LOGIN": {
+        "TITLE": "登录",
+        "USERNAME": "用户名",
+        "USERNAME-PLACEHOLDER": "输入您的用户名",
+        "PASSWORD": "密码",
+        "PASSWORD-PLACEHOLDER": "输入密码",
+        "INVALID-CREDENTIALS": "无效的凭证",
+        "ACTION": {
+            "CONFIRM": "登录"
+        }
+    },
+    "ACCOUNT": {
+        "ACTIVATE": {
+          "TITLE": "激活账户",
+          "ACTIVATING-MESSAGE": "{{userFullName}}请等待，我们正在激活你的账号。",
+          "SUCCESS-MESSAGE": "你的帐号不能被激活。 请在下面登录，开始设计和运行流程。",
+          "FAILURE-MESSAGE": "你的帐号不能被激活。它已经被激活或激活链接已经失效。"
+        },
+
+        "RESET-PASSWORD-REQUEST": {
+          "MESSAGE": "忘记了你的密码?输入你的电子邮件地址，收到一封电子邮件来重置你的密码。",
+          "TITLE": "重置密码",
+          "EMAIL": "电子邮件地址",
+          "EMAIL-PLACEHOLDER": "输入你的电子邮件",
+          "SECURITY-SECTION": "安全检查",
+          "CONFIRM": "请求密码重置",
+          "SUCCESS-MESSAGE": "你将很快收到一封邮件，并重新设置你的密码。",
+          "ERROR": {
+              "UNEXISTING-USER": "使用给定的电子邮件地址的用户不存在。"
+          }
+        },
+
+        "RESET-PASSWORD": {
+          "TITLE": "重置密码",
+          "PASSWORD": "密码",
+          "PASSWORD-CONFIRM": "确认密码",
+          "PASSWORD-PLACEHOLDER": "输入一个新密码",
+          "PASSWORD-CONFIRM-PLACEHOLDER": "确认新密码",
+          "CONFIRM": "更改密码",
+          "LOADING": "重置密码",
+          "SUCCESS-MESSAGE": "你的密码已经改变了。",
+          "LOGIN": "现在登录",
+          "FAILURE-MESSAGE": "你的密码不能重置。"
+        }
+    },
+    "APP": {
+        "KICKSTART": {
+            "TITLE": "启动应用程序",
+            "DESCRIPTION": "创建流程模型、表单和应用定义，然后与他人分享您的模型和定义。"
+        },
+        "TASKS": {
+            "TITLE": "任务",
+            "DESCRIPTION": "访问你的完整任务列表，并在任何流程应用中分配给你的任务。同时，开始新的流程和任务。"
+        },
+        "IDENTITY-MANAGEMENT": {
+            "TITLE": "身份管理",
+            "TITLE-TENANT-ADMIN": "身份管理",
+            "DESCRIPTION": "管理你的个人资料:改变你的照片，名字和其他的设置。作为一名管理用户，管理用户和组。",
+            "DESCRIPTION-TENANT-ADMIN": "管理组织中的用户和组。"
+        },
+        "CUSTOM-APP" : {
+            "TITLE-TASKS": "任务",
+            "TITLE-PROCESSES": "流程"
+        },
+        "POPUP" : {
+            "ADD-APP-TITLE": "添加应用到登陆页面",
+            "ADD-APP-SUMMARY": "在你的登陆页面上添加一个应用程序"
+        },
+        "ACTION": {
+            "DELETE": "删除应用程序"
+        },
+        "MESSAGE": {
+            "DELETED": "应用程序被成功移除"
+        }
+    }
+}
